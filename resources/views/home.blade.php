@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col-md-4 offset-md-8">
                         <a href="{{ route('capturar') }}">
-                            <button type="button" class="btn btn-primary">Caputrar Carros</button>
+                            <button type="button" class="btn btn-primary">Capturar Carros</button>
                         </a>
                     </div>
                 </div>
