@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -26,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -37,4 +40,33 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function login(Request $request){
+        $data = $request->only([
+            'username',
+            'password'
+        ]);
+
+        $validator = $this->validator($data);
+
+        if($validator->fails()){
+            return redirect()->route('login')->withErrors($validator)->withInput();
+        }
+
+        if(Auth::attempt($data)){
+            return redirect()->route('home');
+        }else{
+            $validator->errors()->add('password', 'Usuário e/ou senha incorreto(s).');
+
+            return redirect()->route('login')->withErrors($validator)->withInput();
+        }
+    }
+
+    protected function validator(array $data){
+        return Validator::make($data, [
+            'username' => ['required', 'string', 'max:100'],
+            'password' => ['required', 'string', 'min:3']
+        ]);
+    }
+
 }
