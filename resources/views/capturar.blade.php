@@ -8,9 +8,14 @@
                 <div class="card-header">Capturar Carros</div>
 
                 <div class="card-body">
-                    @if (session('status'))
+                    @if (session('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                    @if (session('success'))
                         <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                            {{ session('success') }}
                         </div>
                     @endif
                 </div>

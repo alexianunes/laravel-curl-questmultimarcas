@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Artigo;
+
 
 class HomeController extends Controller
 {
@@ -20,7 +22,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $artigos = Artigo::paginate(10);
+        $artigos = Artigo::where('idusuario', '=', Auth::user()->id)->paginate(10);
 
 
 

@@ -11,13 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/capturar', 'CapturarController@index')->name('capturar');
 Route::post('/capturar/store', 'CapturarController@storecarros')->name('capturar.store');
+Route::post('/capturar/destroy/{id}', 'CapturarController@destroy')->name('capturar.destroy');
