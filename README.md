@@ -4,7 +4,8 @@
 - Aplicação para requisição ao site Quest Multimarcas (https://www.questmultimarcas.com.br/estoque), capturando com REGEX os dados dos veículos resultantes da busca pelo termo digitado.
 
 ## Requisitos
-- PHP 7.2 ou +
+- PHP 7.2+
+- Laravel 6+
 - MSYQL 5.7+
 - Composer
 
