@@ -18,3 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/capturar', 'CapturarController@index')->name('capturar');
+Route::post('/capturar/store', 'CapturarController@storecarros')->name('capturar.store');
