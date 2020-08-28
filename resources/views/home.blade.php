@@ -78,7 +78,7 @@
                     <p class="text-center">Nenhum Artigo Encontrado.</p>    
                 @endif
                 
-
+                {{$artigos->links()}}
 
             </div>
         </div>
