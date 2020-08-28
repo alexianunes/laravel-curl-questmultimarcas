@@ -100,12 +100,13 @@ class CapturarController extends Controller
 
             
             
-
-            return redirect()->route('home')->with('success', 'Captura Realizada com Sucesso!');
+             return response()->json(true);
+            // return redirect()->route('home')->with('success', 'Captura Realizada com Sucesso!');
             // dd($matches);
         }
 
-        return redirect()->route('capturar')->with('error', 'Houve um erro ao realizar a captura');
+        return response()->json(false);
+        // return redirect()->route('capturar')->with('error', 'Houve um erro ao realizar a captura');
 
     }
 

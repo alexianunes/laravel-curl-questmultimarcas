@@ -37266,6 +37266,36 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+$(document).ready(function () {
+  $("#btnCapturar").click(function () {
+    $.ajax({
+      type: 'POST',
+      url: BASE_URL + '/capturar/store',
+      data: {
+        _token: $('#csrf-token-id').attr('content'),
+        txtCapturar: $('#txtCapturar').val()
+      },
+      dataType: 'json',
+      beforeSend: function beforeSend() {
+        Notiflix.Loading.Dots('Buscando...');
+      },
+      complete: function complete() {
+        Notiflix.Loading.Remove();
+      },
+      success: function success(data) {
+        if (data) {
+          Notiflix.Report.Success('Sucesso', 'Carros capturados com sucesso', 'Ok', function () {
+            window.location = BASE_URL;
+          });
+        } else {
+          Notiflix.Report.Failure('Opsss', 'Houve uma falha ao buscar por esse termo. Tente novamente.', 'Ok');
+        }
+      },
+      fail: function fail() {}
+    });
+  });
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

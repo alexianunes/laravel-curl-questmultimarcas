@@ -20,20 +20,17 @@
                     @endif
                 </div>
                     
-                <form action="{{route('capturar.store')}}" method="POST"> 
-                @csrf
+                <form method="POST"> 
                 
                 <div class="row">
                     <div class="col-md-11 ml-3">
-                        <input type="text" name="txtCapturar" required class="form-control" placeholder="Digite o termo de pesquisa" />
+                        <input type="text" name="txtCapturar" id="txtCapturar" required class="form-control" placeholder="Digite o termo de pesquisa" />
                     </div>
                 </div>
 
                 <div class="row mt-3 mb-3">
                     <div class="col-md-3 offset-md-9">
-                        <a href="{{ route('capturar') }}">
-                            <button type="submit" class="btn btn-primary">Salvar</button>
-                        </a>
+                            <button type="button" id="btnCapturar" class="btn btn-primary">Salvar</button>
                     </div>
                 </div>
 
